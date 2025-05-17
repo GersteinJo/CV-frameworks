@@ -201,7 +201,7 @@ import pandas as pd
 import numpy as np
 from sklearn.manifold import TSNE
 
-def get_tsne(embeddings):
+def get_tsne(embeddings, labels):
     # Create t-SNE
     tsne = TSNE(n_components=2, random_state=1,
                 init='pca', n_iter=5000,
@@ -241,5 +241,5 @@ def run(encoder_function: callable, loader: torch.utils.data.DataLoader, origina
         })
 
     print(f"classification_accuracy : {cl_acc}, \nsecond_order_similarity : {cor_diss}")
-    data_df = get_tsne(embeddings_np)
+    data_df = get_tsne(embeddings_np, labels_np)
     return embeddings_np, labels_np, original_images_np, data_df
